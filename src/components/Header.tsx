@@ -6,7 +6,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-teal-600 rounded-sm flex items-center justify-center">
+            <div className="w-8 h-8 bg-black rounded-sm flex items-center justify-center">
               <span className="text-white font-bold text-sm">♦</span>
             </div>
             <span className="text-xl font-semibold text-gray-800">Hel-Ali</span>
