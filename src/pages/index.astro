@@ -1,11 +1,29 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.tsx";
+import HeroSection from "../components/HeroSection.tsx";
+import MissionSection from "../components/MissionSection.tsx";
+import ApproachSection from "../components/ApproachSection.tsx";
+import ActivitiesSection from "../components/ActivitiesSection.tsx";
+import BlogSection from "../components/BlogSection.tsx";
+import StatsSection from "../components/StatsSection.tsx";
+import AboutSection from "../components/AboutSection.tsx";
+import CallToActionSection from "../components/CallToActionSection.tsx";
+import Footer from "../components/Footer.tsx";
+import "../styles/global.css";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Hel-Ali - Empoderando Comunidades">
+  <Header client:load />
+  <main>
+    <HeroSection client:load />
+    <MissionSection />
+    <ApproachSection client:load />
+    <ActivitiesSection />
+    <BlogSection />
+    <StatsSection />
+    <AboutSection />
+    <CallToActionSection />
+  </main>
+  <Footer />
 </Layout>
