@@ -22,7 +22,7 @@ const BlogSection: React.FC = () => {
 
           <div className="relative h-64 rounded-lg overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"
+              src="https://live.staticflickr.com/2899/34058596995_72e93a6bb0_b.jpg"
               alt="Mujeres emprendedoras"
               className="w-full h-full object-cover"
             />

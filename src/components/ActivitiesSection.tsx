@@ -12,19 +12,19 @@ const ActivitiesSection: React.FC = () => {
       title: "Alcance Comunitario",
       description: "Involucrando a las comunidades locales para entender sus necesidades y proporcionar apoyo.",
       image:
-        "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        "https://live.staticflickr.com/2830/33673897180_0c400c14ca_b.jpg",
     },
     {
       title: "Capacitación en Habilidades",
       description: "Ofreciendo capacitación vocacional y programas de desarrollo de habilidades.",
       image:
-        "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        "https://live.staticflickr.com/2846/33217154454_18fe784c42_b.jpg",
     },
     {
       title: "Ayuda de Emergencia",
       description: "Respondiendo a emergencias y proporcionando asistencia inmediata.",
       image:
-        "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        "https://live.staticflickr.com/8894/17362014175_9c82e1cf40_b.jpg",
     },
   ]
 
