@@ -16,16 +16,16 @@ const Header: React.FC = () => {
             <a href="/" className="text-gray-700 hover:text-teal-600 transition-colors">
               Inicio
             </a>
-            <a href="/sobre-nosotros" className="text-gray-700 hover:text-teal-600 transition-colors">
+            <a href="#about" className="text-gray-700 hover:text-teal-600 transition-colors">
               Sobre Nosotros
             </a>
-            <a href="/programas" className="text-gray-700 hover:text-teal-600 transition-colors">
-              Programas
+            <a href="#activities" className="text-gray-700 hover:text-teal-600 transition-colors">
+              Activididades
             </a>
-            <a href="/blog" className="text-gray-700 hover:text-teal-600 transition-colors">
+            <a href="#blog" className="text-gray-700 hover:text-teal-600 transition-colors">
               Blog
             </a>
-            <a href="/contacto" className="text-gray-700 hover:text-teal-600 transition-colors">
+            <a href="#contact" className="text-gray-700 hover:text-teal-600 transition-colors">
               Contacto
             </a>
             <button className="bg-pink-200 text-pink-800 hover:bg-pink-300 px-4 py-2 rounded-md transition-colors">

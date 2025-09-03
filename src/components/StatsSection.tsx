@@ -22,7 +22,7 @@ const StatsSection: React.FC = () => {
   ]
 
   return (
-    <section className="py-16 px-30">
+    <section id="contact" className="py-16 px-30">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">Estadísticas Clave</h2>
 

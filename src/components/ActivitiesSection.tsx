@@ -29,22 +29,22 @@ const ActivitiesSection: React.FC = () => {
   ]
 
   return (
-    <section className="py-16 px-30">
+    <section id="activities" className="py-16 px-30">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">Nuestras Actividades</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-12 text-start">Nuestras Actividades</h2>
 
         <div className="grid md:grid-cols-3 gap-8">
           {activities.map((activity, index) => (
-            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg">
-              <div className="relative h-48">
+            <div key={index} className="bg-white rounded-lg overflow-hidden">
+              <div className="relative h-82">
                 <img
                   src={activity.image || "/placeholder.svg"}
                   alt={activity.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">{activity.title}</h3>
+              <div className="mt-4">
+                <h3 className="text-xl text-gray-800 mb-2">{activity.title}</h3>
                 <p className="text-gray-600">{activity.description}</p>
               </div>
             </div>

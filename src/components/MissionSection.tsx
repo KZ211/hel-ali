@@ -2,7 +2,7 @@ import type React from "react"
 
 const MissionSection: React.FC = () => {
   return (
-    <section className="py-16 px-30">
+    <section id="about" className="py-16 px-30">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Nuestra Misión, Visión y Valores</h2>
         <p className="text-gray-600 leading-relaxed text-lg">
