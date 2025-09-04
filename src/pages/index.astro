@@ -1,27 +1,29 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import HeroSection from "../components/HeroSection.tsx";
-import MissionSection from "../components/MissionSection.tsx";
-import ApproachSection from "../components/ApproachSection.tsx";
-import ActivitiesSection from "../components/ActivitiesSection.tsx";
-import BlogSection from "../components/BlogSection.tsx";
-import StatsSection from "../components/StatsSection.tsx";
-import CallToActionSection from "../components/CallToActionSection.tsx";
-import Footer from "../components/Footer.tsx";
+import {
+  AstroLayout as Layout,
+  AstroHeader as Header,
+  AstroHeroSection as HeroSection,
+  AstroMissionSection as MissionSection,
+  AstroApproachSection as ApproachSection,
+  AstroActivitiesSection as ActivitiesSection,
+  AstroBlogSection as BlogSection,
+  AstroStatsSection as StatsSection,
+  AstroCallToActionSection as CallToActionSection,
+  AstroContactSection as ContactSection,
+  AstroFooter as Footer,
+} from "../components/astro";
 import "../styles/global.css";
 ---
 
-<Layout title="Hel-Ali - Empoderando Comunidades">
-  <Header client:load />
-  <main>
-    <HeroSection client:load />
+<Layout title="Hel-Ali - Hel-Ali - Empoderando Comunidades">
+  <main class="bg-primary">
+    <HeroSection />
     <MissionSection />
-    <ApproachSection client:load />
+    <ApproachSection />
     <ActivitiesSection />
     <BlogSection />
     <StatsSection />
+    <ContactSection />
     <CallToActionSection />
   </main>
-  <Footer />
 </Layout>

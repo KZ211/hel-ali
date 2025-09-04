@@ -1,2 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-family-orbitron: 'Orbitron', sans-serif;
+  --color-primary: #F2FBE0;
+  --color-white: #ffffff;
+  --color-gray-900: #1a202c;
+  --color-gray-800: #2d3748;
+  --color-gray-700: #4a5568;
+  --color-gray-600: #718096;
+  --color-gray-500: #a0aec0;
+  --color-gray-400: #cbd5e0;
+  --color-gray-300: #e2e8f0;
+  --color-gray-200: #edf2f7;
+  --color-gray-100: #f7fafc;
+  --font-size-4xl: '2.25rem';
+  --font-size-3xl: '1.875rem';
+  --font-size-2xl: '1.5rem';
+  --font-size-lg: '1.125rem';
+  --font-weight-bold: '700';
+  --max-width-6xl: '72rem';
+  --padding-16: '4rem';
+  --padding-30: '7.5rem';
+  --margin-6: '1.5rem';
+  --margin-auto: 'auto';
+}
+
+/* Custom styles without @apply */
+body {
+  background-color: white;
+  color: #1a202c;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
