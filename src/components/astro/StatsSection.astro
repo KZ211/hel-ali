@@ -22,15 +22,15 @@ const stats: Stat[] = [
 
 <section class="py-16 px-30">
   <div class="container mx-auto max-w-6xl">
-    <h2 class="text-3xl font-bold text-gray-800 mb-12">Estadísticas Clave</h2>
-
     <div class="grid md:grid-cols-3 gap-8">
-      {stats.map((stat) => (
-        <div class="text-center">
-          <p class="text-4xl font-bold text-teal-600 mb-2">{stat.value}</p>
-          <p class="text-gray-600">{stat.label}</p>
-        </div>
-      ))}
+      {
+        stats.map((stat) => (
+          <div class="text-center">
+            <h3 class="font-bold text-active mb-2">{stat.value}</h3>
+            <h2 class="text-gray-600">{stat.label}</h2>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>

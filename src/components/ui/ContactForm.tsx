@@ -54,7 +54,7 @@ export const ContactForm: React.FC = () => {
           <p className="text-gray-600">Gracias por contactarnos. Te responderemos pronto.</p>
           <button 
             onClick={() => setIsSubmitted(false)}
-            className="mt-6 text-teal-600 hover:text-teal-700 font-medium"
+            className="bg-light-blue mt-6 text-teal-600 hover:text-teal-700 font-medium"
           >
             Enviar otro mensaje
           </button>
@@ -112,7 +112,7 @@ export const ContactForm: React.FC = () => {
             type="submit"
             disabled={isSubmitting}
             className={`w-full py-3 rounded-md text-white font-medium transition-colors ${
-              isSubmitting ? 'bg-teal-400 cursor-not-allowed' : 'bg-teal-600 hover:bg-teal-700'
+              isSubmitting ? 'bg-light-blue cursor-not-allowed' : 'bg-light-blue hover:bg-teal-700'
             }`}
           >
             {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}

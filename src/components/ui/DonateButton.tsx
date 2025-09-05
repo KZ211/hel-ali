@@ -9,7 +9,7 @@ export const DonateButton: React.FC = () => {
   return (
     <button
       onClick={handleDonate}
-      className="bg-pink-200 text-pink-800 hover:bg-pink-300 px-8 py-3 rounded-md text-lg font-medium transition-colors"
+      className="bg-active text-primary hover:bg-primary hover:text-active px-8 py-3 rounded-md text-lg font-medium transition-colors"
     >
       Donar Ahora
     </button>

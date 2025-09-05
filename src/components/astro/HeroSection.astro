@@ -1,5 +1,5 @@
 ---
-
+import { DonateButton } from "../ui/DonateButton";
 ---
 
 <section class="flex items-center justify-center">
@@ -16,7 +16,7 @@
     </div>
 
     <div class="relative z-10 text-center max-w-4xl">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 opacity-60 mt-20">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 mt-20">
         Empoderando Comunidades,
         <br />
         Transformando Vidas
@@ -26,11 +26,7 @@
         Colombia. <br />Tu donación puede hacer la diferencia.
       </p>
       <a href="/donar">
-        <button
-          class="bg-pink-200 text-pink-800 hover:bg-pink-300 px-8 py-3 rounded-md text-lg font-medium transition-colors"
-        >
-          Donar Ahora
-        </button>
+        <DonateButton />
       </a>
     </div>
   </div>
