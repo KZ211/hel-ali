@@ -1,0 +1,36 @@
+---
+interface Stat {
+  value: string;
+  label: string;
+}
+
+const stats: Stat[] = [
+  {
+    value: "5,000+",
+    label: "Personas Ayudadas",
+  },
+  {
+    value: "1,200+",
+    label: "Familias Apoyadas",
+  },
+  {
+    value: "300+",
+    label: "Voluntarios",
+  },
+];
+---
+
+<section class="py-16 px-30">
+  <div class="container mx-auto max-w-6xl">
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        stats.map((stat) => (
+          <div class="text-center">
+            <h3 class="font-bold text-active mb-2">{stat.value}</h3>
+            <h2 class="text-gray-600">{stat.label}</h2>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
