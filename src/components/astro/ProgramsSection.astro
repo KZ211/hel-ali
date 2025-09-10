@@ -3,6 +3,7 @@ interface Activity {
   title: string;
   description: string;
   image: string;
+  alt: string;
 }
 
 const activities: Activity[] = [
@@ -11,40 +12,53 @@ const activities: Activity[] = [
     description:
       "Involucrando a las comunidades locales para entender sus necesidades y proporcionar apoyo.",
     image: "https://live.staticflickr.com/2830/33673897180_0c400c14ca_b.jpg",
+    alt: "Fotografia de personas caminando por un pasillo con casas pintadas de amarillo",
   },
   {
     title: "Capacitación en Habilidades",
     description:
       "Ofreciendo capacitación vocacional y programas de desarrollo de habilidades.",
     image: "https://live.staticflickr.com/2846/33217154454_18fe784c42_b.jpg",
+    alt: "Fotografia de una persona sentada con algunas pilas de libros alrededor",
   },
   {
     title: "Ayuda de Emergencia",
     description:
       "Respondiendo a emergencias y proporcionando asistencia inmediata.",
     image: "https://live.staticflickr.com/8894/17362014175_9c82e1cf40_b.jpg",
+    alt: "Fotografia de una nena joven en brazos de su padre",
   },
 ];
 ---
 
-<section id="activities" class="py-16 px-30">
+<section id="activities" class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
   <div class="container mx-auto max-w-6xl">
-    <h2 class="text-3xl font-bold mb-12 text-start">Nuestras Actividades</h2>
+    <h2
+      class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 lg:mb-16 text-center sm:text-left"
+    >
+      Programas
+    </h2>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
+    >
       {
         activities.map((activity) => (
-          <div class="rounded-lg overflow-hidden">
-            <div class="relative h-82">
+          <div class="rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="relative h-48 sm:h-56 lg:h-64">
               <img
                 src={activity.image || "/placeholder.svg"}
-                alt={activity.title}
+                alt={activity.alt}
                 class="w-full h-full object-cover rounded-lg"
               />
             </div>
-            <div class="mt-4">
-              <h3 class="text-xl mb-2">{activity.title}</h3>
-              <p class="text-gray-600">{activity.description}</p>
+            <div class="mt-4 sm:mt-6 px-2 sm:px-0">
+              <h3 class="text-blue-sky text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3 text-center sm:text-left">
+                {activity.title}
+              </h3>
+              <p class="text-gray-600 text-sm sm:text-base leading-relaxed text-center sm:text-left">
+                {activity.description}
+              </p>
             </div>
           </div>
         ))
