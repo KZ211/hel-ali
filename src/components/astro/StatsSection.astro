@@ -20,14 +20,18 @@ const stats: Stat[] = [
 ];
 ---
 
-<section class="py-16 px-30">
+<section class="bg-gray-800 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
   <div class="container mx-auto max-w-6xl">
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
       {
         stats.map((stat) => (
-          <div class="text-center">
-            <h3 class="font-bold text-active mb-2">{stat.value}</h3>
-            <h2 class="text-gray-600">{stat.label}</h2>
+          <div class="text-center p-4 sm:p-6 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-active mb-2 sm:mb-3">
+              {stat.value}
+            </h3>
+            <h2 class="text-gray-600 text-sm sm:text-base lg:text-lg font-medium">
+              {stat.label}
+            </h2>
           </div>
         ))
       }

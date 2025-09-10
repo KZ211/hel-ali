@@ -2,32 +2,44 @@
 import { DonateButton } from "../ui/DonateButton";
 ---
 
-<section class="flex items-center justify-center">
+<section
+  class="bg-gray-800 relative w-full lg:static lg:flex lg:items-center lg:justify-center"
+>
   <div
-    class="relative h-[500px] w-[1024px] flex items-center justify-center text-white px-30"
+    class="relative min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] w-full flex items-center justify-center text-white lg:px-30"
   >
-    <div class="absolute inset-0 rounded-lg overflow-hidden">
+    <!-- Background Image -->
+    <div class="bg-gray-800 absolute inset-0 overflow-hidden lg:rounded-lg">
       <img
         src="https://live.staticflickr.com/3938/33217485204_b3af3cbfa1_b.jpg"
-        alt="Ancianos mirando hacia el frente"
-        class="w-full h-full object-cover"
+        alt="Fotografia de una pareja de personas mayores mirando con una sonrisa discreta hacia la camara"
+        class="mask-b-from-80% md:mask-b-from-30% w-full h-full object-cover"
       />
       <div class="absolute inset-0"></div>
     </div>
 
-    <div class="relative z-10 text-center max-w-4xl">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 mt-20">
+    <!-- Content -->
+    <div class="relative text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      <h1
+        class="backdrop-blur-[1px] text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold mb-4 sm:mb-6 leading-tight"
+      >
         Empoderando Comunidades,
-        <br />
-        Transformando Vidas
+        <br class="hidden sm:block" />
+        <span class="sm:hidden"> </span>Transformando Vidas
       </h1>
-      <p class="text-lg md:text-xl mb-8 opacity-90">
+      <p
+        class="backdrop-blur-[2px] text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 opacity-90 leading-relaxed max-w-2xl mx-auto"
+      >
         Únete a nuestra misión para apoyar a las poblaciones vulnerables en
-        Colombia. <br />Tu donación puede hacer la diferencia.
+        Colombia.
+        <br class="hidden sm:block" />
+        <span class="sm:hidden"> </span>Tu donación puede hacer la diferencia.
       </p>
-      <a href="/donar">
-        <DonateButton />
-      </a>
+      <div class="mt-6 sm:mt-8">
+        <a href="/donar" class="inline-block">
+          <DonateButton />
+        </a>
+      </div>
     </div>
   </div>
 </section>
