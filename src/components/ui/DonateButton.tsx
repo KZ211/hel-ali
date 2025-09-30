@@ -69,12 +69,12 @@ export const DonateButton: React.FC = () => {
         return;
       }
       if (data.checkout_url) { 
-        window.open(data.checkout_url, '_blank');
-        // Cerrar el modal después de abrir exitosamente el checkout
+        window.location.href = data.checkout_url;
+        // Cerrar el modal después de redirigir exitosamente al checkout
         setIsModalOpen(false);
       } 
       if(data.url){
-        window.open(data.url, '_blank');
+        window.location.href = data.url;
       }
       
     } catch (error) {
