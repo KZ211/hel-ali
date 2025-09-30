@@ -1,0 +1,149 @@
+---
+import "../styles/global.css";
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  <title>Error en la Donación - Hel-Ali</title>
+  <meta name="description" content="Ha ocurrido un error al procesar tu donación. Te ayudamos a solucionarlo." />
+</head>
+<body class="bg-gradient-to-br from-red-50 to-orange-100 min-h-screen flex items-center justify-center p-4">
+  <div class="max-w-md w-full">
+    <!-- Tarjeta principal -->
+    <div class="bg-white rounded-2xl shadow-xl p-8 text-center relative overflow-hidden">
+      <!-- Decoración de fondo -->
+      <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-400 to-orange-500"></div>
+      
+      <!-- Icono de error -->
+      <div class="mb-6">
+        <div class="mx-auto w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-4">
+          <svg class="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Mensaje principal -->
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+        Error en la Donación
+      </h1>
+      
+      <p class="text-gray-600 mb-6 leading-relaxed">
+        Lo sentimos, ha ocurrido un problema al procesar tu donación. No te preocupes, no se ha realizado ningún cargo a tu cuenta.
+      </p>
+
+      <!-- Posibles causas -->
+      <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-6 text-left">
+        <h3 class="font-semibold text-orange-800 mb-3 flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          Posibles causas:
+        </h3>
+        <ul class="text-sm text-orange-700 space-y-2">
+          <li class="flex items-start">
+            <span class="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            Problemas temporales con el procesador de pagos
+          </li>
+          <li class="flex items-start">
+            <span class="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            Información de pago incorrecta o incompleta
+          </li>
+          <li class="flex items-start">
+            <span class="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            Problemas de conectividad de red
+          </li>
+          <li class="flex items-start">
+            <span class="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            Límites de transacción excedidos
+          </li>
+        </ul>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="space-y-3">
+        <a 
+          href="/" 
+          class="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-200 inline-block"
+        >
+          Intentar Nuevamente
+        </a>
+        
+        <a 
+          href="mailto:soporte@hel-ali.org?subject=Error%20en%20Donación&body=He%20experimentado%20un%20error%20al%20intentar%20realizar%20una%20donación.%20Por%20favor,%20ayúdenme%20a%20resolverlo." 
+          class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-gray-200 inline-block"
+        >
+          Contactar Soporte
+        </a>
+        
+        <a 
+          href="/" 
+          class="w-full text-gray-500 hover:text-gray-700 font-medium py-2 px-6 transition-colors duration-200 inline-block"
+        >
+          Volver al Inicio
+        </a>
+      </div>
+
+      <!-- Información de ayuda -->
+      <div class="mt-8 pt-6 border-t border-gray-100">
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <div class="flex items-start space-x-3">
+            <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div class="text-left">
+              <h4 class="font-semibold text-blue-800 text-sm mb-1">¿Necesitas ayuda inmediata?</h4>
+              <p class="text-blue-700 text-xs leading-relaxed">
+                Nuestro equipo de soporte está disponible para ayudarte. Incluye detalles sobre el error y el método de pago que intentaste usar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Información de contacto -->
+    <div class="mt-6 text-center space-y-2">
+      <p class="text-sm text-gray-600">
+        <strong>Soporte técnico:</strong> 
+        <a href="mailto:soporte@hel-ali.org" class="text-red-600 hover:text-red-700 font-medium underline">
+          soporte@hel-ali.org
+        </a>
+      </p>
+      <p class="text-xs text-gray-500">
+        Horario de atención: Lunes a Viernes, 9:00 AM - 6:00 PM
+      </p>
+    </div>
+
+    <!-- Métodos alternativos -->
+    <div class="mt-6 bg-white rounded-lg shadow-md p-4">
+      <h3 class="font-semibold text-gray-800 mb-3 text-center">Métodos Alternativos de Donación</h3>
+      <div class="grid grid-cols-1 gap-3 text-sm">
+        <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
+          <span class="text-gray-700">Transferencia Bancaria</span>
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+        <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
+          <span class="text-gray-700">PayPal</span>
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+        <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
+          <span class="text-gray-700">Criptomonedas</span>
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
