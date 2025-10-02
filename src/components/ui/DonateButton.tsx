@@ -4,13 +4,13 @@ import { type PaymentProvider } from '../../utils/paymentProviders';
 
 interface DonationData {
   country: string;
+  countryCode: string;
   amount: number;
   isAnonymous: boolean;
   firstName?: string;
   lastName?: string;
   email?: string;
   paymentProvider?: PaymentProvider;
-  recommendedCurrency?: string;
 }
 
 export const DonateButton: React.FC = () => {
@@ -27,16 +27,13 @@ export const DonateButton: React.FC = () => {
   };
 
   const handleDonationConfirm = async (donationData: DonationData) => {
-    console.log(donationData);
     const dLocalURL = `${SUPABASE_API_URL}/dlocal-create-checkout-session`;
     const stripeURL = `${SUPABASE_API_URL}/stripe-create-checkout-session`;
     const providerIsDLocal = donationData.paymentProvider === 'dlocal';
     const providerURL = providerIsDLocal ? dLocalURL : stripeURL;
-    console.log(donationData.country);
-    //TODO: Añadir validacion de country
     const dLocalBody = {
       amount: donationData.amount,
-      country: "AR",
+      country: `${donationData.countryCode}`,
     };
     const stripeBody = {
       line_items: [
@@ -62,7 +59,6 @@ export const DonateButton: React.FC = () => {
       }
 
       const data = await response.json();
-      console.log('Donation data:', data);
       // Abrir la URL de checkout en una nueva ventana
       if(!data){
         alert(data.error || 'Error creando checkout');

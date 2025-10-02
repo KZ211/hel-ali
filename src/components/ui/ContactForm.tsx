@@ -33,9 +33,6 @@ export const ContactForm: React.FC = () => {
       // Simulación de envío de formulario
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Aquí iría la lógica real de envío del formulario
-      console.log('Formulario enviado:', formData);
-      
       setIsSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
     } catch (err) {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CountrySelector } from './CountrySelector';
-import { getPaymentProvider, getProviderInfo, getRecommendedCurrency, type PaymentProvider } from '../../utils/paymentProviders';
+import { getPaymentProvider, type PaymentProvider } from '../../utils/paymentProviders';
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -10,13 +10,13 @@ interface DonationModalProps {
 
 interface DonationData {
   country: string;
+  countryCode: string;
   amount: number;
   isAnonymous: boolean;
   firstName?: string;
   lastName?: string;
   email?: string;
   paymentProvider?: PaymentProvider;
-  recommendedCurrency?: string;
 }
 
 interface CountryData {
@@ -29,6 +29,7 @@ interface CountryData {
 export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose, onConfirm }) => {
   const [formData, setFormData] = useState<DonationData>({
     country: '',
+    countryCode: '',
     amount: 0,
     isAnonymous: false,
     firstName: '',
@@ -50,35 +51,31 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose, o
   const detectCountry = async () => {
     setCountryLoading(true);
     try {
-      const response = await fetch('https://api.ipregistry.co/?key=tryout');
-      const data: CountryData = await response.json();
+      const response = await fetch('https://api.ipregistry.co/?key=ira_C2zdIYxzlhgDCpuL6UATTuNhuqj6ZX3Ysp3H');
+      const data = await response.json();
       
       // Validar que la respuesta tenga la estructura esperada
       const countryName = data?.country?.name || 'Argentina';
+      const countryCode = data?.country?.code || 'AR';
       const paymentProvider = getPaymentProvider(countryName);
-      const recommendedCurrency = getRecommendedCurrency(countryName);
       
       setFormData(prev => ({
         ...prev,
         country: countryName,
-        paymentProvider,
-        recommendedCurrency
+        countryCode: countryCode,
+        paymentProvider
       }));
-      
-      console.log(`País detectado automáticamente: ${countryName}`);
-      console.log(`Proveedor de pago asignado: ${paymentProvider}`);
-      console.log(`Moneda recomendada: ${recommendedCurrency}`);
     } catch (error) {
       console.error('Error detecting country:', error);
       const fallbackCountry = 'Argentina';
+      const fallbackCountryCode = 'AR';
       const paymentProvider = getPaymentProvider(fallbackCountry);
-      const recommendedCurrency = getRecommendedCurrency(fallbackCountry);
       
       setFormData(prev => ({
         ...prev,
         country: fallbackCountry,
-        paymentProvider,
-        recommendedCurrency
+        countryCode: fallbackCountryCode,
+        paymentProvider
       }));
     } finally {
       setCountryLoading(false);
@@ -143,13 +140,13 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose, o
   const handleClose = () => {
     setFormData({
       country: '',
+      countryCode: '',
       amount: 0,
       isAnonymous: false,
       firstName: '',
       lastName: '',
       email: '',
-      paymentProvider: undefined,
-      recommendedCurrency: undefined
+      paymentProvider: undefined
     });
     setErrors({});
     onClose();
@@ -162,17 +159,59 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose, o
         [field]: value
       };
       
-      // Si el campo que cambió es el país, actualizar el proveedor de pago y moneda
+      // Si el campo que cambió es el país, actualizar el proveedor de pago y el countryCode
       if (field === 'country' && value) {
         const paymentProvider = getPaymentProvider(value);
-        const recommendedCurrency = getRecommendedCurrency(value);
+        
+        // Buscar el código del país basado en el nombre
+        const countryData = [
+          { code: 'AR', name: 'Argentina' },
+          { code: 'BO', name: 'Bolivia' },
+          { code: 'BR', name: 'Brasil' },
+          { code: 'CL', name: 'Chile' },
+          { code: 'CO', name: 'Colombia' },
+          { code: 'CR', name: 'Costa Rica' },
+          { code: 'CU', name: 'Cuba' },
+          { code: 'DO', name: 'República Dominicana' },
+          { code: 'EC', name: 'Ecuador' },
+          { code: 'SV', name: 'El Salvador' },
+          { code: 'GT', name: 'Guatemala' },
+          { code: 'HN', name: 'Honduras' },
+          { code: 'MX', name: 'México' },
+          { code: 'NI', name: 'Nicaragua' },
+          { code: 'PA', name: 'Panamá' },
+          { code: 'PY', name: 'Paraguay' },
+          { code: 'PE', name: 'Perú' },
+          { code: 'UY', name: 'Uruguay' },
+          { code: 'VE', name: 'Venezuela' },
+          { code: 'ES', name: 'España' },
+          { code: 'US', name: 'Estados Unidos' },
+          { code: 'CA', name: 'Canadá' },
+          { code: 'FR', name: 'Francia' },
+          { code: 'DE', name: 'Alemania' },
+          { code: 'IT', name: 'Italia' },
+          { code: 'PT', name: 'Portugal' },
+          { code: 'GB', name: 'Reino Unido' },
+          { code: 'AU', name: 'Australia' },
+          { code: 'JP', name: 'Japón' },
+          { code: 'KR', name: 'Corea del Sur' },
+          { code: 'CN', name: 'China' },
+          { code: 'IN', name: 'India' },
+          { code: 'RU', name: 'Rusia' },
+          { code: 'ZA', name: 'Sudáfrica' },
+          { code: 'EG', name: 'Egipto' },
+          { code: 'NG', name: 'Nigeria' },
+          { code: 'KE', name: 'Kenia' },
+          { code: 'MA', name: 'Marruecos' },
+          { code: 'TN', name: 'Túnez' },
+          { code: 'DZ', name: 'Argelia' }
+        ];
+        
+        const selectedCountry = countryData.find(country => country.name === value);
+        const countryCode = selectedCountry ? selectedCountry.code : 'AR'; // Fallback a Argentina
         
         newData.paymentProvider = paymentProvider;
-        newData.recommendedCurrency = recommendedCurrency;
-        
-        console.log(`País seleccionado: ${value}`);
-        console.log(`Proveedor de pago: ${paymentProvider}`);
-        console.log(`Moneda recomendada: ${recommendedCurrency}`);
+        newData.countryCode = countryCode;
       }
       
       return newData;
@@ -236,11 +275,9 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose, o
                     Proveedor de pago: {formData.paymentProvider === 'dlocal' ? 'dLocal' : 'Stripe'}
                   </span>
                 </div>
-                {formData.recommendedCurrency && (
-                  <p className="text-xs text-blue-600 mt-1">
-                    Moneda recomendada: {formData.recommendedCurrency}
-                  </p>
-                )}
+                <p className="text-xs text-blue-600 mt-1">
+                  Moneda: USD (se convertirá automáticamente a tu moneda local)
+                </p>
               </div>
             )}
           </div>
@@ -248,7 +285,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose, o
           {/* Monto */}
           <div>
             <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">
-              Monto de Donación ($)
+              Monto de Donación (USD)
             </label>
             <input
               type="number"
@@ -260,11 +297,11 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose, o
               className={`text-gray-700 w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                 errors.amount ? 'border-red-500' : 'border-gray-300'
               }`}
-              placeholder="Ingresa el monto"
+              placeholder="Ingresa el monto en USD"
             />
             {errors.amount && <p className="text-red-500 text-sm mt-1">{errors.amount}</p>}
             {formData.isAnonymous && (
-              <p className="text-sm text-gray-500 mt-1">Monto máximo para donaciones anónimas: $1000</p>
+              <p className="text-sm text-gray-500 mt-1">Monto máximo para donaciones anónimas: $1000 USD</p>
             )}
           </div>
 
