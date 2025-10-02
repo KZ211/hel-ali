@@ -51,7 +51,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose, o
   const detectCountry = async () => {
     setCountryLoading(true);
     try {
-      const response = await fetch('https://api.ipregistry.co/?key=ira_C2zdIYxzlhgDCpuL6UATTuNhuqj6ZX3Ysp3H');
+      const response = await fetch(`https://api.ipregistry.co/?key=${import.meta.env.PUBLIC_IPREGISTRY_API_KEY}`);
       const data = await response.json();
       
       // Validar que la respuesta tenga la estructura esperada
