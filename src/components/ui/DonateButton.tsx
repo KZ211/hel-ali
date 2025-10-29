@@ -27,29 +27,29 @@ export const DonateButton: React.FC = () => {
   };
 
   const handleDonationConfirm = async (donationData: DonationData) => {
-    const dLocalURL = `${SUPABASE_API_URL}/dlocal-create-checkout-session`;
-    const stripeURL = `${SUPABASE_API_URL}/stripe-create-checkout-session`;
     const providerIsDLocal = donationData.paymentProvider === 'dlocal';
-    const providerURL = providerIsDLocal ? dLocalURL : stripeURL;
+    const providerURL = `${SUPABASE_API_URL}/create-checkout-session`;
     const dLocalBody = {
       amount: donationData.amount,
       country: `${donationData.countryCode}`,
+      provider: 'dlocal',
     };
     const stripeBody = {
+      provider: 'stripe',
       line_items: [
         {
           price_data: {
-            unit_amount: donationData.amount,   // en centavos (ej: 5000 = 50.00)
+            unit_amount: donationData.amount,
           },
         },
       ],
-    }
+    };
     const currentBody = providerIsDLocal ? dLocalBody : stripeBody;
     try {
       const response = await fetch(providerURL, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(currentBody),
       });
