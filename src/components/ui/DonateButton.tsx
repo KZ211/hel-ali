@@ -28,30 +28,20 @@ export const DonateButton: React.FC = () => {
 
   const handleDonationConfirm = async (donationData: DonationData) => {
     const providerIsDLocal = donationData.paymentProvider === 'dlocal';
-    const providerURL = `${SUPABASE_API_URL}/create-checkout-session`;
-    const dLocalBody = {
+    const createCheckoutURL = `${SUPABASE_API_URL}/create-checkout-session`;
+    const donationBody = {
       amount: donationData.amount,
-      country: `${donationData.countryCode}`,
-      provider: 'dlocal',
-    };
-    const stripeBody = {
-      provider: 'stripe',
-      line_items: [
-        {
-          price_data: {
-            unit_amount: donationData.amount,
-          },
-        },
-      ],
-    };
-    const currentBody = providerIsDLocal ? dLocalBody : stripeBody;
+      country: providerIsDLocal ? `${donationData.countryCode}` : '',
+      provider: donationData.paymentProvider,
+    }
+    console.log('donationBody', donationBody);
     try {
-      const response = await fetch(providerURL, {
+      const response = await fetch(createCheckoutURL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(currentBody),
+        body: JSON.stringify(donationBody),
       });
 
       if (!response.ok) {
@@ -64,13 +54,15 @@ export const DonateButton: React.FC = () => {
         alert(data.error || 'Error creando checkout');
         return;
       }
-      if (data.checkout_url) { 
+      if (providerIsDLocal) { 
+        console.warn('paso por dlocal')
         window.location.href = data.checkout_url;
-        // Cerrar el modal después de redirigir exitosamente al checkout
         setIsModalOpen(false);
       } 
-      if(data.url){
+      if(!providerIsDLocal){
+        console.warn('paso por stripe')
         window.location.href = data.url;
+        setIsModalOpen(false);
       }
       
     } catch (error) {
