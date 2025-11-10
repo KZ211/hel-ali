@@ -30,11 +30,14 @@ export const DonateButton: React.FC = () => {
     const providerIsDLocal = donationData.paymentProvider === 'dlocal';
     const createCheckoutURL = `${SUPABASE_API_URL}/create-checkout-session`;
     const donationBody = {
+      name: donationData.firstName ? donationData.firstName : null,
+      lastName: donationData.lastName ? donationData.lastName : null,
+      email: donationData.email ? donationData.email : null,
       amount: donationData.amount,
       country: providerIsDLocal ? `${donationData.countryCode}` : '',
       provider: donationData.paymentProvider,
     }
-    console.log('donationBody', donationBody);
+
     try {
       const response = await fetch(createCheckoutURL, {
         method: 'POST',
@@ -49,7 +52,6 @@ export const DonateButton: React.FC = () => {
       }
 
       const data = await response.json();
-      // Abrir la URL de checkout en una nueva ventana
       if(!data){
         alert(data.error || 'Error creando checkout');
         return;
@@ -68,7 +70,6 @@ export const DonateButton: React.FC = () => {
     } catch (error) {
       console.error('Error processing donation:', error);
       alert('Hubo un error al procesar tu donación. Por favor, inténtalo de nuevo.');
-      // No cerrar el modal en caso de error para que el usuario pueda intentar de nuevo
       throw error;
     }
   };
